@@ -1,0 +1,94 @@
+ul li {
+  display: flex;
+  align-items: baseline;
+
+  cursor: pointer;
+  list-style: None;
+  padding: 5px 5px 5px 20px;
+  background: white;
+  font-size: 1.5em;
+  font-weight: bold;
+  transition: 0.2s;
+  margin-left: -4%;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+ul li span:nth-child(2) {
+  flex: 1;
+}
+
+ul li input {
+    margin: 0px 10px;
+    zoom: 1.5;
+}
+
+.close:hover {
+  background-color: #f44336;
+  color: white;
+  padding: 0px 5px;
+}
+
+ul li:hover {
+  background: rgb(178, 178, 199);
+  border-radius: 5px;
+}
+
+.checked {
+  background: rgb(50, 13, 185);
+  color: #fff;
+  border-radius: 5px;
+}
+
+.container {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: flex-start;
+  color: rgb(36, 31, 114);
+  padding: 5px 5px 5px 5px;
+  margin: 2% 10%;
+}
+
+h1 {
+  padding: 10px 0px;
+  border-bottom: 2px solid rgb(168, 167, 177);
+}
+
+h1::after {
+  content: "";
+  display: block;
+  border-bottom: 2px solid orange;
+  width: 25%;
+  position: relative;
+  bottom: -12px;
+}
+
+form input {
+  border: none;
+  width: 100%;
+  padding: 10px 0px 10px 20px;
+  font-size: 16px;
+}
+
+form input:focus {
+  background-color: rgb(225, 223, 233);
+}
+
+.btn-container {
+  display: flex;
+  justify-content: flex-end;
+  flex: 1.5;
+}
+
+.operation {
+  padding: 5px 5px;
+  width: 120px;
+  background-color: green;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.operation:hover {
+  background-color: grey;
+}
