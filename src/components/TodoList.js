@@ -9,6 +9,7 @@ class TodoList extends Component {
     this.state = {
       items: [],
       filterType: "all",
+      searchValue: "",
     };
   }
 
@@ -50,7 +51,7 @@ class TodoList extends Component {
     let updatedItems = this.state.items;
     const index = updatedItems.findIndex((value) => value.key === key);
     if (index !== -1) {
-      updatedItems[index].completed = !updatedItems[index].completed
+      updatedItems[index].completed = !updatedItems[index].completed;
       updatedItems = updatedItems[index].completed
         ? updatedItems.concat(updatedItems.splice(index, 1))
         : updatedItems.splice(index, 1).concat(updatedItems);
@@ -58,7 +59,7 @@ class TodoList extends Component {
       this.setState({
         items: updatedItems,
       });
-      console.log("completeItem", updatedItems)
+      console.log("completeItem", updatedItems);
     }
   };
 
@@ -109,13 +110,36 @@ class TodoList extends Component {
     });
   };
 
+  handleChange = (e) => {
+    this.setState({ searchValue: e.target.value });
+  };
+
+  handleSubmit(event) {
+    event.preventDefault();
+  }
+
   render() {
+    const searchValue = this.state.searchValue
+    const entries = this.state.items.filter(
+      (item) =>
+        item.text.toLowerCase().startsWith(searchValue.toLowerCase()) || searchValue === ""
+    );
     return (
       <div className="container">
         <h1>My to do list</h1>
 
+        <form className="form" onSubmit={this.handleSubmit}>
+          <input
+            type="text"
+            value={this.state.searchValue}
+            onChange={this.handleChange}
+            placeholder="Search..."
+          ></input>
+        </form>
+
         <TodoItems
-          entries={this.state.items}
+          entries={entries}
+          // searchValue={this.state.searchValue}
           deleteItems={this.deleteItems}
           completeItems={this.completeItems}
           filterType={this.state.filterType}
@@ -123,14 +147,15 @@ class TodoList extends Component {
         />
 
         <RenderItems
-          entries={this.state.items}
+          entries={entries}
+          // searchValue={this.state.searchValue}
           filterType={this.state.filterType}
           deleteItems={this.deleteItems}
           completeItem={this.completeItem}
           selectedItem={this.selectedItem}
         />
 
-        <form onSubmit={this.addItem}>
+        <form className="form" onSubmit={this.addItem}>
           <input
             ref={(name) => (this.inputTaskName = name)}
             placeholder="+ Add Item"

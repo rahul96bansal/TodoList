@@ -1,15 +1,18 @@
+ul {
+  padding-inline-start: 0px;
+}
 ul li {
   display: flex;
   align-items: baseline;
-
+  
   cursor: pointer;
   list-style: None;
-  padding: 5px 5px 5px 20px;
+  padding: 10px;
   background: white;
   font-size: 1.5em;
   font-weight: bold;
   transition: 0.2s;
-  margin-left: -4%;
+  margin-left: 0;
 
   border-top: 1px solid rgba(255, 255, 255, 0.3);
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
@@ -20,8 +23,8 @@ ul li span:nth-child(2) {
 }
 
 ul li input {
-    margin: 0px 10px;
-    zoom: 1.5;
+  margin: 0px 10px;
+  zoom: 1.5;
 }
 
 .close:hover {
@@ -31,6 +34,9 @@ ul li input {
 }
 
 ul li:hover {
+  /* transform: translate(0,-350px); */
+  /* transition-duration: 2s;
+  transition-timing-function: ease-in; */
   background: rgb(178, 178, 199);
   border-radius: 5px;
 }
@@ -55,7 +61,7 @@ h1 {
   border-bottom: 2px solid rgb(168, 167, 177);
 }
 
-h1::after {
+h1:after {
   content: "";
   display: block;
   border-bottom: 2px solid orange;
@@ -63,32 +69,77 @@ h1::after {
   position: relative;
   bottom: -12px;
 }
-
-form input {
+/* 
+.search input {
   border: none;
-  width: 100%;
-  padding: 10px 0px 10px 20px;
+  outline: none;
+  font-size: 14px;
+  padding: 15px;
+} */
+
+.form input {
+  border: none;
+  width: -webkit-fill-available;
+  padding: 15px;
   font-size: 16px;
 }
 
-form input:focus {
+.form input:focus {
   background-color: rgb(225, 223, 233);
 }
 
-.btn-container {
-  display: flex;
-  justify-content: flex-end;
-  flex: 1.5;
+
+.btn-container:after {
+  content: "";
+  display: block;
+  width: 150%;
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  /* position: relative; */
+}
+
+.label {
+  background-color: rgb(196, 183, 183);
+  color: blue;
+  padding: 1px 5px;
+  border-radius: 5px;
+  font-size: 12px;
 }
 
 .operation {
-  padding: 5px 5px;
-  width: 120px;
-  background-color: green;
-  border-radius: 5px;
+  margin: 10px 10px;
+  padding: 10px 20px 10px 0px;
+  width: auto;
+  background-color: inherit;
+  color: rgb(173, 172, 187);
+  border: none;
+  outline: none;
   font-size: 14px;
 }
 
+.selected-btn {
+  color: rgb(15, 12, 58);
+}
+
+.selected-btn:after {
+  content: "";
+  display: block;
+  border-bottom: 2px solid rgb(21, 5, 243);
+  position: relative;
+  bottom: -22px;
+}
+
+.button {
+  margin: 10px 0px;
+  padding: 10px 10px 10px 10px;
+  width: auto;
+  border-radius: 5px;
+} 
+
+.button:hover {
+  background-color: rgb(65, 58, 163);
+}
+
 .operation:hover {
-  background-color: grey;
+  color: rgb(15, 12, 58);
 }

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import FlipMove from "react-flip-move";
 
 class RenderItems extends Component {
   constructor(props) {
@@ -6,35 +7,28 @@ class RenderItems extends Component {
   }
 
   filterTasks = () => {
-    let {filterType, entries} = this.props
+    let { filterType, entries } = this.props;
+    // console.log("searchValue", searchValue)
     if (filterType === "complete") {
-        entries = entries.filter(
-        (item) => item.completed === true
-      );
+      entries = entries.filter((item) => item.completed === true);
     } else if (filterType === "uncomplete") {
-        entries = entries.filter(
-        (item) => item.completed === false
-      );
+      entries = entries.filter((item) => item.completed === false);
     }
     return entries;
   };
 
   createTasks = (item) => {
-    const { selectedItem, deleteItems, completeItem} = this.props;
+    const { selectedItem, deleteItems, completeItem } = this.props;
     return (
       <li
         key={item.key}
         onClick={(e) => selectedItem(item.key, e)}
-        style={
-          item.selected
-            ? { backgroundColor: "rgb(50, 13, 185)", color: "white" }
-            : { backgroundColor: "white", color: "rgb(36, 31, 114)" }
-        }
+        className={item.selected ? "checked" : ""}
       >
         <input
           type="checkbox"
           onClick={() => completeItem(item.key)}
-          checked={item.completed? true: false}
+          defaultChecked={item.completed ? true : false}
         ></input>
         <span>{item.text}</span>
         <span className="close" onClick={() => deleteItems([item.key])}>
@@ -47,7 +41,9 @@ class RenderItems extends Component {
   render() {
     return (
       <div>
-        <ul>{this.filterTasks().map(this.createTasks)}</ul>
+        {/* <FlipMove duration={25} easing="ease-out"> */}
+          <ul>{this.filterTasks().map(this.createTasks)}</ul>
+        {/* </FlipMove> */}
       </div>
     );
   }
