@@ -125,7 +125,7 @@ class TodoList extends Component {
         item.text.toLowerCase().startsWith(searchValue.toLowerCase()) || searchValue === ""
     );
     return (
-      <div className="container">
+      <div>
         <h1>My to do list</h1>
 
         <form className="form" onSubmit={this.handleSubmit}>

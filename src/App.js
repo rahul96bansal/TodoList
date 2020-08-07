@@ -1,31 +1,34 @@
 import React from "react";
 // import logo from "./logo.svg";
 // import "./App.css";
-import "./TodoList.css"
-import TodoList from './components/TodoList'
-import Test from './components/Test'
+import "./TodoList.css";
+import TodoList from "./components/TodoList";
+// import Test from "./components/Test";
+
+import { Provider } from "react-redux";
+import store from "./redux/store";
+import AddTodo from "./containers/AddTodo";
+import VisibleTodoList from "./containers/VisibleTodoList";
+import AllCount from "./containers/AllCount"
+import {Buttons} from "./component/Buttons";
+import SearchTodo from "./containers/SearchTodo";
 
 function App() {
   return (
-    <div className="App">
-      {/* <Test /> */}
-      <TodoList />
+    <Provider store={store}>
+      <section className="todoapp">
+        <div className="container">
+          {/* <Test /> */}
+          {/* <TodoList /> */}
 
-      {/* <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header> */}
-    </div>
+          {/* <SearchTodo /> */}
+          <AddTodo />
+          <VisibleTodoList />
+          <AllCount />
+          {/* <footer class="info"></footer> */}
+        </div>
+      </section>
+    </Provider>
   );
 }
 
